@@ -8,9 +8,11 @@ $id = 4;
 $firstName = "Remy";
 $lastName = "Girodon";
 
-$user = new User($id, $firstName, $lastName);
+$user1 = new User($id, $firstName, $lastName);
 
-$config = include 'inc/config.inc';
+$user2 = new User(65, "Lionel", "Messi");
+
+// $config = include 'inc/config.inc';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -20,7 +22,10 @@ $config = include 'inc/config.inc';
   <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <h1><?php echo "Hello ".$user->firstName." ".$user->lastName." !" ?></h1>
-  <h2><?php echo "DB : ".$config['db.host'].":".$config['db.port'] ?></h2>
+  <h1><?= "Hello ".$user1->firstName." ".$user1->lastName." !" ?></h1>
+  
+  <h1><?= "Hello ".$user2->firstName." ".$user2->lastName." !" ?></h1>
+  
+  <!-- <h2><?= "DB : ".$config['db.host'].":".$config['db.port'] ?></h2> -->
 </body>
 </html>
