@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.black-background {
+	background-color:#000000;
+}
+
+.btn.black-background:hover,
+.btn.black-background:focus,
+.btn.black-background.focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.text-black {
+  color: black;
+}
+
+.text-white {
+	color:#ffffff;
+}
+
+.standardWidth {
+	width:200px !important;
+}
