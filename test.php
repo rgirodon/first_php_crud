@@ -1,6 +1,5 @@
 <?php
 use dao\UserDao;
-use domain\User;
 
 include 'inc/autoload.inc';
 ?>
