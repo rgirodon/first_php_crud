@@ -8,7 +8,7 @@ $config = include 'inc/config.inc';
 
 $userDao = new UserDao($config);
 
-$users  = $userDao->findAllUsers();
+$users = $userDao->findAllUsers();
 ?>
 <!doctype html>
     <html lang="fr">

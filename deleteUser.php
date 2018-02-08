@@ -23,7 +23,7 @@ if (!empty($_GET['id'])) {
     <html lang="fr">
     <head>
       <meta charset="utf-8">
-      <title>Update User</title>
+      <title>Delete User</title>
       <link rel="stylesheet" href="styles/style.css">
       <link 
             rel="stylesheet" 
