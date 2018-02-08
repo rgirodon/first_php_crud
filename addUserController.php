@@ -1,13 +1,11 @@
 <?php
-use dao\UserDao;
-use service\UserService;
-use domain\User;
+use Dao\UserDao;
+use Service\UserService;
+use Domain\User;
 
 include 'inc/autoload.inc';
 
 $config = include 'inc/config.inc';
-
-$userDao = new UserDao($config);
 
 $userService = new UserService();
 
@@ -27,7 +25,11 @@ if (!empty($_POST)) {
     
     if (empty($validationErrors)) {
         
+        $userDao = new UserDao($config);
+        
         $userDao->insertUser($user);
+        
+        $userDao->close();
         
         header("Location: usersController.php");
     }

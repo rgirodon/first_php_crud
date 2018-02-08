@@ -1,13 +1,11 @@
 <?php
-use dao\UserDao;
-use service\UserService;
-use domain\User;
+use Dao\UserDao;
+use Service\UserService;
+use Domain\User;
 
 include 'inc/autoload.inc';
 
 $config = include 'inc/config.inc';
-
-$userDao = new UserDao($config);
 
 $id = "";
 
@@ -15,7 +13,11 @@ if (!empty($_GET['id'])) {
     
     $id = $_GET['id'];
     
+    $userDao = new UserDao($config);
+    
     $user = $userDao->deleteUser($id);
+    
+    $userDao->close();
 }
 
 require 'deleteUserView.php';

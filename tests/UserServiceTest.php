@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use service\UserService;
-use domain\User;
+use Service\UserService;
+use Domain\User;
 
 include 'autoload.inc';
 

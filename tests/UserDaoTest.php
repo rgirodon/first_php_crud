@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use dao\UserDao;
-use domain\User;
+use Dao\UserDao;
+use Domain\User;
 
 include 'autoload.inc';
 
@@ -32,6 +32,8 @@ class UserDaoTest extends TestCase {
      * Cleans up the environment after running a test.
      */
     protected function tearDown() {
+        
+        $this->userDao->close();
         
         $this->userDao = null;
         

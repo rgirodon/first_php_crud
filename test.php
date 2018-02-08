@@ -1,9 +1,9 @@
 <?php
-use dao\UserDao;
+
+use Dao\UserDao;
 
 include 'inc/autoload.inc';
-?>
-<?php
+
 $config = include 'inc/config.inc';
 
 $userDao = new UserDao($config);

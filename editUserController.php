@@ -1,7 +1,7 @@
 <?php
-use dao\UserDao;
-use service\UserService;
-use domain\User;
+use Dao\UserDao;
+use Service\UserService;
+use Domain\User;
 
 include 'inc/autoload.inc';
 
@@ -23,6 +23,9 @@ if (!empty($_GET['id'])) {
     $id = $_GET['id'];
     
     $user = $userDao->findUserById($id);
+    
+    $userDao->close();
+    
     $firstName = $user->firstName;
     $lastName = $user->lastName;
 }
@@ -39,6 +42,8 @@ else if (!empty($_POST)) {
     if (empty($validationErrors)) {
         
         $userDao->updateUser($user);
+        
+        $userDao->close();
         
         header("Location: usersController.php");
     }

@@ -2,7 +2,7 @@
 include 'inc/autoload.inc';
 ?>
 <?php
-use domain\User;
+use Domain\User;
 
 $id = 4;
 $firstName = "Remy";
