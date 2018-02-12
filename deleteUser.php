@@ -4,8 +4,7 @@ use service\UserService;
 use domain\User;
 
 include 'inc/autoload.inc';
-?>
-<?php
+
 $config = include 'inc/config.inc';
 
 $userDao = new UserDao($config);
