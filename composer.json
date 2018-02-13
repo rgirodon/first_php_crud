@@ -2,7 +2,8 @@
 	"name" : "dta/firsteclipse",
 	"require" : {
 		"php" : ">=7.0",
-		"phpunit/phpunit" : "6.5.6"
+		"phpunit/phpunit" : "6.5.6",
+		"slim/slim" : "~3.9"
 	},
 	"autoload" : {
 		"psr-4" : {

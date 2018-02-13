@@ -5,7 +5,7 @@ include 'vendor/autoload.php';
 
 $config = include 'inc/config.inc';
 
-$userDao = new UserDao($config);
+$userDao = new UserDao($config["dbSettings"]);
 
 $users  = $userDao->findAllUsers();
 

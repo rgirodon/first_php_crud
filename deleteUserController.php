@@ -11,7 +11,7 @@ if (!empty($_GET['id'])) {
     
     $id = $_GET['id'];
     
-    $userDao = new UserDao($config);
+    $userDao = new UserDao($config["dbSettings"]);
     
     $user = $userDao->deleteUser($id);
     

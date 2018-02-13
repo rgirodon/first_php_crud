@@ -25,7 +25,7 @@ if (!empty($_POST)) {
     
     if (empty($validationErrors)) {
         
-        $userDao = new UserDao($config);
+        $userDao = new UserDao($config["dbSettings"]);
         
         $userDao->insertUser($user);
         

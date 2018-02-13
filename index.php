@@ -25,6 +25,6 @@ $config = include 'inc/config.inc';
   
   <h1><?= "Hello ".$user2->firstName." ".$user2->lastName." !" ?></h1>
   
-  <h2><?= "DB : ".$config['db.host'].":".$config['db.port'] ?></h2>
+  <h2><?= "DB : ".$config['dbSettings']['db.host'].":".$config['dbSettings']['db.port'] ?></h2>
 </body>
 </html>

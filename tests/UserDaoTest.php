@@ -25,7 +25,7 @@ class UserDaoTest extends TestCase {
         
         $config = include '../inc/config.inc';
         
-        $this->userDao = new UserDao($config);
+        $this->userDao = new UserDao($config["dbSettings"]);
     }
 
     /**
