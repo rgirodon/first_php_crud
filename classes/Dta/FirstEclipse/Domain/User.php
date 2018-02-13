@@ -1,5 +1,5 @@
 <?php
-namespace Domain;
+namespace Dta\FirstEclipse\Domain;
 
 class User {
 

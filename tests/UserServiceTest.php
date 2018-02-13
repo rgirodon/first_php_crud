@@ -1,9 +1,9 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use Service\UserService;
-use Domain\User;
+use Dta\FirstEclipse\Service\UserService;
+use Dta\FirstEclipse\Domain\User;
 
-include 'autoload.inc';
+include '../vendor/autoload.php';
 
 class UserServiceTest extends TestCase {
 

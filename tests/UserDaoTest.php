@@ -1,9 +1,9 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use Dao\UserDao;
-use Domain\User;
+use Dta\FirstEclipse\Dao\UserDao;
+use Dta\FirstEclipse\Domain\User;
 
-include 'autoload.inc';
+include '../vendor/autoload.php';
 
 /**
  * UserDao test case.

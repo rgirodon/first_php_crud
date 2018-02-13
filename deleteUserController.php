@@ -1,9 +1,7 @@
 <?php
-use Dao\UserDao;
-use Service\UserService;
-use Domain\User;
+use Dta\FirstEclipse\Dao\UserDao;
 
-include 'inc/autoload.inc';
+include 'vendor/autoload.php';
 
 $config = include 'inc/config.inc';
 

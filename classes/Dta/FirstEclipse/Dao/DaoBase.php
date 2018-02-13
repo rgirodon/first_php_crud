@@ -1,5 +1,5 @@
 <?php
-namespace Dao;
+namespace Dta\FirstEclipse\Dao;
 
 class DaoBase {
 

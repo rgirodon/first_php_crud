@@ -1,7 +1,5 @@
 <?php
-namespace Service;
-
-use Domain\User;
+namespace Dta\FirstEclipse\Service;
 
 class UserService {
 

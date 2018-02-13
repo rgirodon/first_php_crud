@@ -1,7 +1,7 @@
 <?php
-namespace Dao;
+namespace Dta\FirstEclipse\Dao;
 
-use Domain\User;
+use Dta\FirstEclipse\Domain\User;
 
 class UserDao extends DaoBase {
 

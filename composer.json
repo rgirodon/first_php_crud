@@ -1,0 +1,12 @@
+{
+	"name" : "dta/firsteclipse",
+	"require" : {
+		"php" : ">=7.0",
+		"phpunit/phpunit" : "6.5.6"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Dta\\FirstEclipse\\" : "classes/Dta/FirstEclipse"
+		}
+	}
+}
