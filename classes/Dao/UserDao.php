@@ -1,8 +1,7 @@
 <?php
-namespace dao;
+namespace Dao;
 
-use domain\User;
-
+use Domain\User;
 
 class UserDao extends DaoBase {
 
@@ -27,12 +26,14 @@ class UserDao extends DaoBase {
             $result[] = $user;
         }
         
+        $reponse->closeCursor();
+        
         return $result;
     }
     
     public function findUserById($id) {
         
-        $result;
+        $result = NULL;
         
         $query = $this->bdd->prepare("SELECT id, firstname, lastname FROM user where id = :id");
         
@@ -49,6 +50,8 @@ class UserDao extends DaoBase {
                 $result = new User($id, $firstName, $lastName);
             }
         }
+        
+        $query->closeCursor();
         
         return $result;
     }

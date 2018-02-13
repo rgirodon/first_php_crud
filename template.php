@@ -1,28 +1,8 @@
-<?php
-use dao\UserDao;
-use service\UserService;
-use domain\User;
-
-include 'inc/autoload.inc';
-
-$config = include 'inc/config.inc';
-
-$userDao = new UserDao($config);
-
-$id = "";
-
-if (!empty($_GET['id'])) {
-    
-    $id = $_GET['id'];
-    
-    $user = $userDao->deleteUser($id);
-}
-?>
 <!doctype html>
     <html lang="fr">
     <head>
       <meta charset="utf-8">
-      <title>Delete User</title>
+      <title><?= $title ?></title>
       <link rel="stylesheet" href="styles/style.css">
       <link 
             rel="stylesheet" 
@@ -31,16 +11,7 @@ if (!empty($_GET['id'])) {
             crossorigin="anonymous">
     </head>
     <body>
-    
-    	<div class="alert alert-success" role="alert">User has been deleted</div>
-    	
-    	<br />
-		<div>          
-        	<a href="users.php" class="btn black-background text-white">
-    			<span class="glyphicon glyphicon-list text-white"></span> Back to list of users 
-  			</a>
-        </div>
-    	      
+    <?= $content ?>
     </body>
     <script 
         src="https://code.jquery.com/jquery-3.2.1.js"

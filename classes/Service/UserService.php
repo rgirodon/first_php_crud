@@ -1,7 +1,7 @@
 <?php
-namespace service;
+namespace Service;
 
-use domain\User;
+use Domain\User;
 
 class UserService {
 
