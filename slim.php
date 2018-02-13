@@ -54,5 +54,60 @@ $app->get('/users/{id}',
         return $newResponse;
     });
 
+$app->delete('/users/{id}', 
+    
+    function (Request $request, Response $response, array $args) {
+    
+        $id = $args['id'];
+        
+        $userDao = new UserDao($this->get('dbSettings'));
+        
+        $user = $userDao->deleteUser($id);
+        
+        $userDao->close();
+        
+        $newResponse = $response->withJson(["status"=>200]);
+        
+        return $newResponse;
+    });
+
+$app->post('/users',
+    
+    function (Request $request, Response $response, array $args) {
+        
+        $userDao = new UserDao($this->get('dbSettings'));
+        
+        $user = json_decode($request->getBody());
+        
+        $userDao->insertUser($user);
+        
+        $userDao->close();
+        
+        $newResponse = $response->withJson($user)->withStatus(201);
+        
+        return $newResponse;
+    });
+
+$app->put('/users/{id}',
+    
+    function (Request $request, Response $response, array $args) {
+        
+        $id = $args['id'];
+        
+        $userDao = new UserDao($this->get('dbSettings'));
+        
+        $user = json_decode($request->getBody());
+        
+        $user->id = $id;
+        
+        $userDao->updateUser($user);
+        
+        $userDao->close();
+        
+        $newResponse = $response->withJson(["status"=>200]);
+        
+        return $newResponse;
+    });
+
 
 $app->run();
