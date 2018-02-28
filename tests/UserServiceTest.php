@@ -18,8 +18,6 @@ class UserServiceTest extends TestCase {
      */
     protected function setUp() {
         
-        parent::setUp();
-        
         $this->userService = new UserService();
     }
     
@@ -29,38 +27,45 @@ class UserServiceTest extends TestCase {
     protected function tearDown() {
         
         $this->userService = null;
-        
-        parent::tearDown();
     }
     
-    /**
-     * Tests UserService->isValid()
-     */
-    public function testIsValid() {
+
+    public function testIsValid_OK() {
     
-        $user = new User(null, "Alberto", "Contador");
+        $user = new User(null, "Alberto", "Contador", "toto21");
         
         $this->assertEmpty($this->userService->isValid($user));
+    }
         
-        $user = new User(null, null, "Contador");
+    public function testIsValid_FirstName_Null_NotOK() {
         
-        $this->assertEquals(1, count($this->userService->isValid($user)));
-        
-        $this->assertEquals("FirstName is required", ($this->userService->isValid($user))["user.firstName"]);
-        
-        $user = new User(null, "", "Contador");
+        $user = new User(null, null, "Contador", "toto21");
         
         $this->assertEquals(1, count($this->userService->isValid($user)));
         
         $this->assertEquals("FirstName is required", ($this->userService->isValid($user))["user.firstName"]);
+    }
+     
+    public function testIsValid_FirstName_Empty_NotOK() {
         
-        $user = new User(null, null, null);
+        $user = new User(null, "", "Contador", "toto21");
         
-        $this->assertEquals(2, count($this->userService->isValid($user)));
+        $this->assertEquals(1, count($this->userService->isValid($user)));
+        
+        $this->assertEquals("FirstName is required", ($this->userService->isValid($user))["user.firstName"]);
+    }
+       
+    public function testIsValid_All_NotOK() {
+        
+        $user = new User(null, null, null, null);
+        
+        $this->assertEquals(3, count($this->userService->isValid($user)));
         
         $this->assertEquals("FirstName is required", ($this->userService->isValid($user))["user.firstName"]);
         
         $this->assertEquals("LastName is required", ($this->userService->isValid($user))["user.lastName"]);
+        
+        $this->assertEquals("Password is required", ($this->userService->isValid($user))["user.password"]);
     }
 }
 

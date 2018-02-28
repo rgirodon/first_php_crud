@@ -13,15 +13,16 @@ class UserDao extends DaoBase {
         
         $result = [];
         
-        $reponse = $this->bdd->query("SELECT id, firstname, lastname FROM user order by id");
+        $reponse = $this->bdd->query("SELECT id, firstname, lastname, password FROM user order by id");
         
         while ($donnees = $reponse->fetch()) {
             
             $id = $donnees["id"];
             $firstName = $donnees["firstname"];
             $lastName = $donnees["lastname"];
+            $password = $donnees["password"];
             
-            $user = new User($id, $firstName, $lastName);
+            $user = new User($id, $firstName, $lastName, $password);
             
             $result[] = $user;
         }
@@ -35,7 +36,7 @@ class UserDao extends DaoBase {
         
         $result = NULL;
         
-        $query = $this->bdd->prepare("SELECT id, firstname, lastname FROM user where id = :id");
+        $query = $this->bdd->prepare("SELECT id, firstname, lastname, password FROM user where id = :id");
         
         $query->bindParam(":id", $id);
         
@@ -46,8 +47,9 @@ class UserDao extends DaoBase {
                 $id = $donnees["id"];
                 $firstName = $donnees["firstname"];
                 $lastName = $donnees["lastname"];
+                $password = $donnees["password"];
                 
-                $result = new User($id, $firstName, $lastName);
+                $result = new User($id, $firstName, $lastName, $password);
             }
         }
         
@@ -60,11 +62,13 @@ class UserDao extends DaoBase {
         
         $result;
         
-        $query = $this->bdd->prepare("INSERT INTO user (firstname, lastname) VALUES (:firstName, :lastName)");
+        $query = $this->bdd->prepare("INSERT INTO user (firstname, lastname, password) VALUES (:firstName, :lastName, :password)");
         
         $query->bindParam(":firstName", $user->firstName);
 
         $query->bindParam(":lastName", $user->lastName);
+        
+        $query->bindParam(":password", $user->password);
         
         $query->execute();   
         
@@ -88,11 +92,13 @@ class UserDao extends DaoBase {
         
         $result;
         
-        $query = $this->bdd->prepare("UPDATE user SET firstname = :firstName, lastname = :lastName WHERE id = :id");
+        $query = $this->bdd->prepare("UPDATE user SET firstname = :firstName, lastname = :lastName, password = :password WHERE id = :id");
         
         $query->bindParam(":firstName", $user->firstName);
         
         $query->bindParam(":lastName", $user->lastName);
+        
+        $query->bindParam(":password", $user->password);
         
         $query->bindParam(":id", $user->id);
         

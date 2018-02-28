@@ -21,8 +21,6 @@ class UserDaoTest extends TestCase {
      */
     protected function setUp() {
         
-        parent::setUp();
-        
         $config = include '../inc/config.inc';
         
         $this->userDao = new UserDao($config["dbSettings"]);
@@ -36,8 +34,6 @@ class UserDaoTest extends TestCase {
         $this->userDao->close();
         
         $this->userDao = null;
-        
-        parent::tearDown();
     }
 
 
@@ -54,9 +50,13 @@ class UserDaoTest extends TestCase {
         
         $this->assertEquals("Girodon", $users[0]->lastName);
         
+        $this->assertEquals("passwd", $users[0]->password);
+        
         $this->assertEquals("Michel", $users[1]->firstName);
         
         $this->assertEquals("Durand", $users[1]->lastName);
+        
+        $this->assertEquals("passwd", $users[1]->password);
     }
     
     /**
@@ -69,6 +69,8 @@ class UserDaoTest extends TestCase {
         $this->assertEquals("Remy", $user->firstName);
         
         $this->assertEquals("Girodon", $user->lastName);
+        
+        $this->assertEquals("passwd", $user->password);
     }
     
     /**
@@ -76,7 +78,7 @@ class UserDaoTest extends TestCase {
      */
     public function testInsertUser() {
         
-        $user = new User(null, "Alberto", "Contador");
+        $user = new User(null, "Alberto", "Contador", "passwd");
         
         $id = $this->userDao->insertUser($user);
         
@@ -86,6 +88,8 @@ class UserDaoTest extends TestCase {
         
         $this->assertEquals("Contador", $newUser->lastName);
         
+        $this->assertEquals("passwd", $newUser->password);
+        
         $this->userDao->deleteUser($id);
     }
     
@@ -94,7 +98,7 @@ class UserDaoTest extends TestCase {
      */
     public function testDeleteUser() {
         
-        $user = new User(null, "Alberto", "Contador");
+        $user = new User(null, "Alberto", "Contador", "passwd");
         
         $id = $this->userDao->insertUser($user);
         
@@ -114,7 +118,7 @@ class UserDaoTest extends TestCase {
      */
     public function testUpdateUser() {
         
-        $user = new User(null, "Alberto", "Contador");
+        $user = new User(null, "Alberto", "Contador", "passwd");
         
         $id = $this->userDao->insertUser($user);
         
@@ -124,6 +128,8 @@ class UserDaoTest extends TestCase {
         
         $newUser->lastName = "Ricco";
         
+        $newUser->password = "passwd2";
+        
         $this->userDao->updateUser($newUser);
         
         $updatedUser = $this->userDao->findUserById($id);
@@ -131,6 +137,8 @@ class UserDaoTest extends TestCase {
         $this->assertEquals("Roberto", $updatedUser->firstName);
         
         $this->assertEquals("Ricco", $updatedUser->lastName);
+        
+        $this->assertEquals("passwd2", $updatedUser->password);
         
         $this->userDao->deleteUser($id);
     }

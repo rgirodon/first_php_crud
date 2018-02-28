@@ -83,7 +83,7 @@ $app->post('/users',
         
         $userDao->close();
         
-        $newResponse = $response->withJson($user)->withStatus(201);
+        $newResponse = $response->withJson($user, 201);
         
         return $newResponse;
     });

@@ -9,12 +9,16 @@ class User {
     
     public $lastName;
     
-    public function __construct($id, $firstName, $lastName) {
+    public $password;
+    
+    public function __construct($id, $firstName, $lastName, $password) {
         
         $this->id = $id;
         
         $this->firstName = $firstName;
         
         $this->lastName = $lastName;
+        
+        $this->password = $password;
     }
 }

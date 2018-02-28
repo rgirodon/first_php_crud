@@ -21,6 +21,11 @@ class UserService {
             $result['user.lastName'] = "LastName is required";
         }
         
+        if ($user->password == '') {
+            
+            $result['user.password'] = "Password is required";
+        }
+        
         return $result;
     }
 }
