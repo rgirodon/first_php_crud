@@ -1,7 +1,9 @@
 <?php
 use Slim\Http\Request;
-use Slim\Http\Response;
+
 use Dta\FirstEclipse\Dao\UserDao;
+use Slim\Http\Response;
+use Dta\FirstEclipse\Domain\User;
 
 include 'vendor/autoload.php';
 
@@ -21,6 +23,34 @@ $app->get('/hello/{name}',
                 return $response;
             });
 */
+
+$app->get('/fake_users',
+    
+    function (Request $request, Response $response, array $args) {
+        
+        $users = [];
+        
+        $user1 = new User(1, 'Jean', 'Tigana', 'password');
+        
+        $user2 = new User(2, 'Luis', 'Fernandez', 'password');
+        
+        $user3 = new User(3, 'Alain', 'Giresse', 'password');
+        
+        $user4 = new User(4, 'Michel', 'Platini', 'password');
+        
+        $users[] = $user1;
+        
+        $users[] = $user2;
+        
+        $users[] = $user3;
+        
+        $users[] = $user4;
+        
+        $newResponse = $response->withJson($users);
+        
+        return $newResponse;
+    });
+    
 
 $app->get('/users',
     
