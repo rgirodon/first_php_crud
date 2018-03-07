@@ -50,6 +50,51 @@ $app->get('/fake_users',
         
         return $newResponse;
     });
+
+$app->get('/fake_users/{idUser}',
+    
+    function (Request $request, Response $response, array $args) {
+        
+        $id = $args['idUser'];
+        
+        $user = null;
+        
+        $users = [];
+        
+        $user1 = new User(1, 'Jean', 'Tigana', 'password');
+        
+        $user2 = new User(2, 'Luis', 'Fernandez', 'password');
+        
+        $user3 = new User(3, 'Alain', 'Giresse', 'password');
+        
+        $user4 = new User(4, 'Michel', 'Platini', 'password');
+        
+        $users[] = $user1;
+        
+        $users[] = $user2;
+        
+        $users[] = $user3;
+        
+        $users[] = $user4;
+        
+        foreach ($users as $iterUser) {
+            
+            if ($iterUser->id == $id) {
+                
+                $user = $iterUser;
+            }
+        }
+        
+        if ($user) {
+        
+            $newResponse = $response->withJson($user);
+        }
+        else {
+            $newResponse = $response->withJson(["status"=>404], 404);
+        }
+        
+        return $newResponse;
+    });
     
 
 $app->get('/users',
