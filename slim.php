@@ -82,6 +82,8 @@ $app->get('/fake_users/{idUser}',
             if ($iterUser->id == $id) {
                 
                 $user = $iterUser;
+                
+                break;
             }
         }
         
@@ -96,6 +98,37 @@ $app->get('/fake_users/{idUser}',
         return $newResponse;
     });
     
+
+$app->post('/fake_users',
+    
+    function (Request $request, Response $response, array $args) {
+        
+        $users = [];
+        
+        $user1 = new User(1, 'Jean', 'Tigana', 'password');
+        
+        $user2 = new User(2, 'Luis', 'Fernandez', 'password');
+        
+        $user3 = new User(3, 'Alain', 'Giresse', 'password');
+        
+        $user4 = new User(4, 'Michel', 'Platini', 'password');
+        
+        $users[] = $user1;
+        
+        $users[] = $user2;
+        
+        $users[] = $user3;
+        
+        $users[] = $user4;
+        
+        $user = json_decode($request->getBody());
+        
+        $users[] = $user;
+        
+        $newResponse = $response->withJson($user, 201);
+        
+        return $newResponse;
+    });
 
 $app->get('/users',
     
